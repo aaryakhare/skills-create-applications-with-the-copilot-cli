@@ -1,4 +1,4 @@
-const { add, subtract, multiply, divide } = require('../lib/calculator')
+const { add, subtract, multiply, divide, modulo, power, squareRoot } = require('../lib/calculator')
 
 describe('Calculator operations', () => {
   test('adds 2 + 3 = 5', () => {
@@ -29,5 +29,26 @@ describe('Calculator operations', () => {
   test('throws on non-numeric input', () => {
     expect(() => add('foo', 2)).toThrow(/must be a finite number/)
     expect(() => subtract(1, 'bar')).toThrow(/must be a finite number/)
+  })
+
+  // Extended operations
+  test('modulo: 5 % 2 = 1', () => {
+    expect(modulo(5, 2)).toBe(1)
+  })
+
+  test('power: 2 ^ 3 = 8', () => {
+    expect(power(2, 3)).toBe(8)
+  })
+
+  test('squareRoot: sqrt(16) = 4', () => {
+    expect(squareRoot(16)).toBe(4)
+  })
+
+  test('modulo by zero throws', () => {
+    expect(() => modulo(1, 0)).toThrow(/zero/)
+  })
+
+  test('squareRoot of negative number throws', () => {
+    expect(() => squareRoot(-9)).toThrow(/negative/)
   })
 })
