@@ -37,4 +37,23 @@ function divide (a, b) {
   return x / y
 }
 
-module.exports = { add, subtract, multiply, divide }
+function modulo (a, b) {
+  const x = ensureNumber(a, 'a')
+  const y = ensureNumber(b, 'b')
+  if (y === 0) throw new RangeError('modulo by zero')
+  return x % y
+}
+
+function power (base, exponent) {
+  const b = ensureNumber(base, 'base')
+  const e = ensureNumber(exponent, 'exponent')
+  return Math.pow(b, e)
+}
+
+function squareRoot (n) {
+  const v = ensureNumber(n, 'n')
+  if (v < 0) throw new RangeError('square root of negative number')
+  return Math.sqrt(v)
+}
+
+module.exports = { add, subtract, multiply, divide, modulo, power, squareRoot }
